@@ -1,0 +1,57 @@
+.contact {
+  height: 70px;
+  display: grid;
+  grid-template-columns: 0.4fr 2.4fr 0.2fr;
+  padding: 13px;
+  transition: all 0.1s;
+}
+
+.contact:hover {
+  background-color: #f1f3f5;
+}
+
+.contact__img {
+  height: 45px;
+  width: 45px;
+  margin-right: 10px;
+  border-radius: 200px;
+}
+
+.contact__name {
+  font-weight: 500;
+  /* color: #343a40; */
+}
+
+.contact__name:hover {
+  color: #343434;
+}
+
+.contact__message {
+  color: #adb5bd;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.contact__date-and-message-amount {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3px;
+}
+
+.contact__date {
+  color: #adb5bd;
+  font-size: 14px;
+}
+
+.contact__message-amount {
+  background-color: #339af0;
+  padding: 1px 6.5px;
+  align-self: flex-end;
+  border-radius: 200px;
+  color: #fff;
+  font-size: 14px;
+  width: auto;
+  height: fit-content;
+}

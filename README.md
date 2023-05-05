@@ -1,1 +1,1 @@
-# telegram-clone-proskills-react-and-back-end
+# telegram-clone-proskills-react

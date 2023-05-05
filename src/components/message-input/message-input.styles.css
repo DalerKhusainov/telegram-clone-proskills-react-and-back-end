@@ -1,0 +1,15 @@
+.message-input {
+  padding-right: 5px;
+  display: grid;
+  grid-template-columns: 0.1fr 1.7fr 0.1fr 0.1fr;
+  align-content: center;
+  align-items: center;
+  border-left: solid 1px #f1f3f5;
+}
+
+.attach-icon {
+  height: fit-content;
+  width: fit-content;
+  transform: rotate(50deg);
+  margin-left: auto;
+}

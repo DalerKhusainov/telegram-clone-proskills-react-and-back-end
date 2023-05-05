@@ -1,0 +1,20 @@
+.chat-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: solid 1px #f1f3f5;
+}
+
+.chat-info {
+  margin-left: 20px;
+}
+
+.chat-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.chat-field__icons {
+  display: flex;
+  margin-right: 5px;
+}

@@ -1,0 +1,21 @@
+html {
+  box-sizing: border-box;
+  color: #343a40;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  font-family: "Nunito", sans-serif;
+  /* background-color: #d0ebff;
+  background-color: #e7f5ff; */
+  background-color: #a5d8ff;
+  z-index: 3;
+}
