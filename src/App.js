@@ -1,36 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AppArea from "./components/app-area/AppArea";
-import Login from "./pages/login-panel/Login";
-// import { RegisterPanel } from "./pages/register-panel/RegisterPanel";
-import "./App.css";
+import { Login } from "./pages/login/Login";
+import { Register } from "./pages/register/Register";
+import { Home } from "./pages/home/Home";
 
-const App = () => {
-  const [userFullName, setUserFullName] = useState("");
-  const [currentUser, setCurrentUser] = useState([]);
-
+function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Login
-              setUserFullName={setUserFullName}
-              setCurrentUser={setCurrentUser}
-            />
-          }
-        />
-        {/* <Route path="/register" element={<RegisterPanel />} /> */}
-        <Route
-          path="/contacts"
-          element={
-            <AppArea userFullName={userFullName} currentUser={currentUser} />
-          }
-        />
-      </Routes>
-    </BrowserRouter>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/">
+            <Route index element={<Login />} />
+            <Route path="home" element={<Home />} />
+            <Route path="register" element={<Register />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
-};
+}
 
 export default App;
