@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./login.style.scss";
 
-export const Login = () => {
+export const Login = ({ setCurUserContacts, setCurrentUser }) => {
   const [err, setErr] = useState(false);
   const [users, setUsers] = useState([]);
 
@@ -24,7 +24,17 @@ export const Login = () => {
     const logedUser = users.filter(
       (user) => (user.email === email) & (user.password === password)
     );
-    if (logedUser.length === 1) navigate("/home");
+
+    axios
+      .get(`http://localhost:5000/contacts/${logedUser[0].firstName}`)
+      .then((response) => setCurUserContacts(response.data))
+      .catch((err) => console.log(err));
+
+    if (logedUser.length === 1) {
+      setTimeout(() => {
+        navigate("/home");
+      }, 5000);
+    }
     if (logedUser.length <= 0 || logedUser.length > 2) setErr(true);
   };
 

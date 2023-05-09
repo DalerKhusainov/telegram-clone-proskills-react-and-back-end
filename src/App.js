@@ -1,23 +1,12 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Login } from "./pages/login/Login";
-import { Register } from "./pages/register/Register";
-import { Home } from "./pages/home/Home";
+import { Main } from "./components/main/Main";
 
-function App() {
+const App = () => {
   return (
     <div>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/">
-            <Route index element={<Login />} />
-            <Route path="home" element={<Home />} />
-            <Route path="register" element={<Register />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <Main />
     </div>
   );
-}
+};
 
 export default App;

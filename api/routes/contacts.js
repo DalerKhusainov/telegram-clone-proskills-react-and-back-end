@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 let uuid = require("uuid");
 
+router.use(express.json());
+
 // Generate a v1 (Time-based) id
 // uuid.v1()
 
@@ -311,7 +313,8 @@ router.get("/", (req, res) => {
 
 router.get("/:user", (req, res) => {
   const filteredContacts = allContacts.filter(
-    (contact) => contact.owner.toLocaleLowerCase() === req.params.user
+    (contact) =>
+      contact.owner.toLocaleLowerCase() === req.params.user.toLocaleLowerCase()
   );
   res.send(filteredContacts);
   //   res.end("Success");

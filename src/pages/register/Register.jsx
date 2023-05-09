@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./register.styles.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Register = () => {
   const [err, setErr] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +23,11 @@ export const Register = () => {
       body: JSON.stringify(user),
     })
       .then((response) => response.json())
-      .then((res) => setErr(false))
+      .then((res) => {
+        navigate("/home");
+        setErr(false);
+        console.log(res);
+      })
       .catch((err) => setErr(true));
   };
 

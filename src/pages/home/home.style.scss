@@ -1,0 +1,17 @@
+.home {
+  background-color: #a7bcff;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .container {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    width: 80%;
+    height: 69rem;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    overflow: hidden;
+  }
+}
