@@ -9,6 +9,8 @@ export const Main = (props) => {
   const [currentUser, setCurrentUser] = useState([]);
   const [curUserContacts, setCurUserContacts] = useState([]);
 
+  console.log(curUserContacts);
+
   return (
     <div>
       <BrowserRouter>
@@ -25,7 +27,12 @@ export const Main = (props) => {
             />
             <Route
               path="home"
-              element={<Home curUserContacts={curUserContacts} />}
+              element={
+                <Home
+                  curUserContacts={curUserContacts}
+                  currentUser={currentUser}
+                />
+              }
             />
             <Route path="register" element={<Register />} />
           </Route>

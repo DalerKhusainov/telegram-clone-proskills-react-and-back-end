@@ -317,12 +317,13 @@ router.get("/:user", (req, res) => {
       contact.owner.toLocaleLowerCase() === req.params.user.toLocaleLowerCase()
   );
   res.send(filteredContacts);
-  //   res.end("Success");
 });
 
-// router.get("/", (req, res) => {
-//   res.send(allContacts);
-//   res.end("Success");
-// });
+router.get("/allcontacts/:id", (req, res) => {
+  const selectedContact = allContacts.filter(
+    (contact) => contact.contactId === req.params.id
+  );
+  res.send(selectedContact);
+});
 
 module.exports = router;

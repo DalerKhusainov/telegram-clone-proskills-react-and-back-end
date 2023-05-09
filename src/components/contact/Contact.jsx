@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import "./contact.styles.scss";
 
-export const Contacts = ({ contact }) => {
+export const Contacts = ({ contact, setSelectedContact }) => {
   const {
+    contactId,
     contactFirstName,
     contactLastName,
     contactImgUrl,
@@ -12,9 +14,22 @@ export const Contacts = ({ contact }) => {
     newMessages,
   } = contact;
 
+  const handleClickContact = (id) => {
+    axios
+      .get(`http://localhost:5000/contacts/allcontacts/${id}`)
+      .then((res) => setSelectedContact(res.data))
+      .catch((err) => console.log(err));
+  };
+
   return (
-    <div className="contact">
-      <img className="contact__img" alt="" src={contactImgUrl} />
+    <div className="contact" onClick={() => handleClickContact(contactId)}>
+      <div className="contact__img">
+        <img alt="" src={contactImgUrl} />
+        <div
+          className="is-online"
+          style={{ display: `${isLogin ? "block" : "none"}` }}
+        ></div>
+      </div>
       <div className="contact__info">
         <p className="name">{`${contactFirstName} ${contactLastName}`}</p>
         <p className="last-message">{lastMessage}</p>

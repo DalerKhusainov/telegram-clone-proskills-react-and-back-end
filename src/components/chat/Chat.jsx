@@ -5,12 +5,15 @@ import { InputMessage } from "../input-message/InputMessage";
 
 import "./chat.styles.scss";
 
-export const Chat = () => {
+export const Chat = ({ selectedContact, currentUser }) => {
   return (
     <div className="chat">
-      <ChatTitle />
+      <ChatTitle selectedContact={selectedContact} />
       <MessagesList />
-      <InputMessage />
+      <InputMessage
+        selectedContact={selectedContact}
+        currentUser={currentUser}
+      />
     </div>
   );
 };

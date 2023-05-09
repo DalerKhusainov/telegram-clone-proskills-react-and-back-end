@@ -7,6 +7,8 @@ export const Login = ({ setCurUserContacts, setCurrentUser }) => {
   const [err, setErr] = useState(false);
   const [users, setUsers] = useState([]);
 
+  console.log(users);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,7 +35,7 @@ export const Login = ({ setCurUserContacts, setCurrentUser }) => {
     if (logedUser.length === 1) {
       setTimeout(() => {
         navigate("/home");
-      }, 5000);
+      }, 1000);
     }
     if (logedUser.length <= 0 || logedUser.length > 2) setErr(true);
   };

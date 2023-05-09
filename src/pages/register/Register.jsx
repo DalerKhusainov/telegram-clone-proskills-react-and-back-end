@@ -24,7 +24,7 @@ export const Register = () => {
     })
       .then((response) => response.json())
       .then((res) => {
-        navigate("/home");
+        navigate("/");
         setErr(false);
         console.log(res);
       })
