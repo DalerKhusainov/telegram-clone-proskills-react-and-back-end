@@ -14,7 +14,11 @@ export const Home = ({ curUserContacts, currentUser }) => {
           curUserContacts={curUserContacts}
           setSelectedContact={setSelectedContact}
         />
-        <Chat selectedContact={selectedContact} currentUser={currentUser} />
+        <Chat
+          selectedContact={selectedContact}
+          currentUser={currentUser}
+          curUserContacts={curUserContacts}
+        />
       </div>
     </div>
   );

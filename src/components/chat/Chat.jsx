@@ -5,7 +5,7 @@ import { InputMessage } from "../input-message/InputMessage";
 
 import "./chat.styles.scss";
 
-export const Chat = ({ selectedContact, currentUser }) => {
+export const Chat = ({ selectedContact, currentUser, curUserContacts }) => {
   return (
     <div className="chat">
       <ChatTitle selectedContact={selectedContact} />
@@ -13,6 +13,7 @@ export const Chat = ({ selectedContact, currentUser }) => {
       <InputMessage
         selectedContact={selectedContact}
         currentUser={currentUser}
+        curUserContacts={curUserContacts}
       />
     </div>
   );

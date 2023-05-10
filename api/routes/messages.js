@@ -26,14 +26,14 @@ router.post("/", (req, res) => {
 });
 
 const validateMessage = (postValue) => {
-  const createCourseSchema = Joi.object({
+  const createMessageSchema = Joi.object({
     messageId: Joi.string().min(1).required(),
     senderId: Joi.string().min(1).required(),
     receiverId: Joi.string().min(1).required(),
     message: Joi.string().min(1).required(),
     date: Joi.string().required(),
   });
-  return createCourseSchema.validate(postValue);
+  return createMessageSchema.validate(postValue);
 };
 
 module.exports = router;

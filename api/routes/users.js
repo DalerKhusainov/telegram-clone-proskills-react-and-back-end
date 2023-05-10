@@ -57,14 +57,14 @@ router.post("/", (req, res) => {
 });
 
 const validateUser = (postValue) => {
-  const createCourseSchema = Joi.object({
+  const createUserSchema = Joi.object({
     firstName: Joi.string().min(2).required(),
     lastName: Joi.string().min(2).required(),
     email: Joi.string().email().required(),
     password: Joi.string().min(6).max(15).required(),
     confirmPassword: Joi.ref("password"),
   });
-  return createCourseSchema.validate(postValue);
+  return createUserSchema.validate(postValue);
 };
 
 module.exports = router;

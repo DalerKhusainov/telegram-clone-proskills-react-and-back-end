@@ -27,6 +27,8 @@ export const Login = ({ setCurUserContacts, setCurrentUser }) => {
       (user) => (user.email === email) & (user.password === password)
     );
 
+    setCurrentUser(logedUser);
+
     axios
       .get(`http://localhost:5000/contacts/${logedUser[0].firstName}`)
       .then((response) => setCurUserContacts(response.data))
