@@ -24,10 +24,18 @@ export const Login = ({ setCurUserContacts, setCurrentUser }) => {
     const password = e.target[1].value;
 
     const logedUser = users.filter(
-      (user) => (user.email === email) & (user.password === password)
+      (user) => user.email === email && user.password === password
     );
 
     setCurrentUser(logedUser);
+
+    fetch("http://localhost:5000/users/logedUser", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(logedUser),
+    })
+      .then((res) => res.json())
+      .then((logedUser) => console.log("Loged user is", logedUser));
 
     axios
       .get(`http://localhost:5000/contacts/${logedUser[0].firstName}`)

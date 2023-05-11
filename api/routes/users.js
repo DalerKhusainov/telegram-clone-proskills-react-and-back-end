@@ -32,6 +32,8 @@ const users = [
   },
 ];
 
+let logedUser = [];
+
 router.get("/", (req, res) => {
   res.send(users);
 });
@@ -54,6 +56,11 @@ router.post("/", (req, res) => {
 
   users.push(user);
   res.send(users);
+});
+
+router.post("/logedUser", (req, res) => {
+  logedUser = req.body;
+  res.send(logedUser);
 });
 
 const validateUser = (postValue) => {
