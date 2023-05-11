@@ -1,27 +1,37 @@
-import React, { useState, useRef, useEffect } from "react";
-
-import axios from "axios";
+import React, { useRef } from "react";
 import { v4 as uuid } from "uuid";
 import { setNewDate } from "../../functions/functions";
-
 import { ChatTitle } from "../chat-title/ChatTitle";
 import { MessagesList } from "../messages-list/MessagesList";
 import { InputMessage } from "../input-message/InputMessage";
-
 import "./chat.styles.scss";
 
-export const Chat = ({ selectedContact, currentUser, curUserContacts }) => {
-  const [messages, setMessages] = useState([]);
-  const [filteredMessages, setFilteredMessages] = useState([]);
-  console.log(filteredMessages);
-
+export const Chat = ({
+  selectedContact,
+  currentUser,
+  getMessage,
+  filteredMessages,
+  logedUserAbbreviation,
+}) => {
   const messageInputRef = useRef();
 
   const logedUserId = currentUser.map((user) => user.userId);
   const selectedContactId = selectedContact.map((contact) => contact.contactId);
+  const selectedContactImgURL = selectedContact.map(
+    (contact) => contact.contactImgUrl
+  );
+  const selectedContactLastMessage = selectedContact.map(
+    (contact) => contact.lastMessage
+  );
+  const selectedContactLastMessageDate = selectedContact.map(
+    (contact) => contact.lastMessageDate
+  );
 
-  const handleMessageInput = () => {
+  console.log(selectedContactLastMessageDate);
+
+  const handleMessageInput = async () => {
     const messageInput = messageInputRef.current.value;
+    if (messageInput === "") return;
     const message = {
       messageId: uuid(),
       senderId: logedUserId[0],
@@ -31,37 +41,25 @@ export const Chat = ({ selectedContact, currentUser, curUserContacts }) => {
     };
     messageInputRef.current.value = null;
 
-    fetch("http://localhost:5000/messages", {
+    await fetch("http://localhost:5000/messages", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(message),
-    })
-      .then((res) => res.json())
-      .then((message) => setMessages(message));
+    });
+
+    getMessage();
   };
-
-  // useEffect(() => {
-  //   const newFilteredMessages = messages.filter(
-  //     (message) =>
-  //       message.senderId === logedUserId[0] &&
-  //       message.receiverId === selectedContactId[0]
-  //   );
-  //   setFilteredMessages(newFilteredMessages);
-  // }, [messages, logedUserId, selectedContactId]);
-
-  useEffect(() => {
-    axios
-      .get(
-        `http://localhost:5000/messages/${logedUserId[0]}/${selectedContactId[0]}`
-      )
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
-  }, [logedUserId, selectedContactId]);
 
   return (
     <div className="chat">
       <ChatTitle selectedContact={selectedContact} />
-      <MessagesList />
+      <MessagesList
+        filteredMessages={filteredMessages}
+        selectedContactImgURL={selectedContactImgURL[0]}
+        logedUserAbbreviation={logedUserAbbreviation}
+        selectedContactLastMessage={selectedContactLastMessage[0]}
+        selectedContactLastMessageDate={selectedContactLastMessageDate[0]}
+      />
       <InputMessage
         messageInputRef={messageInputRef}
         handleMessageInput={handleMessageInput}

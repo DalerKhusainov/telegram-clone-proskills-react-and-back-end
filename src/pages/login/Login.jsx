@@ -35,7 +35,7 @@ export const Login = ({ setCurUserContacts, setCurrentUser }) => {
       body: JSON.stringify(logedUser),
     })
       .then((res) => res.json())
-      .then((logedUser) => console.log("Loged user is", logedUser));
+      .then((logedUser) => console.log("Loged"));
 
     axios
       .get(`http://localhost:5000/contacts/${logedUser[0].firstName}`)

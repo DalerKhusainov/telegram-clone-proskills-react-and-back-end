@@ -11,3 +11,8 @@ export const setNewDate = () => {
 
   return `${day}.${month}.${year}, ${hour}:${min}`;
 };
+
+export const getFirstLetter = (value) => {
+  const firstName = value[0].slice(0, 1);
+  return firstName;
+};

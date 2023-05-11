@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./contact.styles.scss";
 
-export const Contacts = ({ contact, setSelectedContact }) => {
+export const Contacts = ({
+  contact,
+  setSelectedContact,
+  currentUser,
+  getMessage,
+  handleClickContact,
+}) => {
   const {
     contactId,
     contactFirstName,
@@ -13,13 +19,6 @@ export const Contacts = ({ contact, setSelectedContact }) => {
     lastMessageDate,
     newMessages,
   } = contact;
-
-  const handleClickContact = (id) => {
-    axios
-      .get(`http://localhost:5000/contacts/allcontacts/${id}`)
-      .then((res) => setSelectedContact(res.data))
-      .catch((err) => console.log(err));
-  };
 
   return (
     <div className="contact" onClick={() => handleClickContact(contactId)}>

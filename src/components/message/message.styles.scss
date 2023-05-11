@@ -32,25 +32,39 @@
     }
 
     .message-date {
-      color: gray;
-      font-size: 1.2rem;
+      color: #495057;
+      font-size: 1rem;
     }
   }
 
   &.owner {
     flex-direction: row-reverse;
 
+    .messageInfo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #9775fa;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      padding: 5px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
     .messageContent {
       align-items: flex-end;
-      background-color: #8da4f1;
+      background-color: #f4fce3;
       border-radius: 10px 0px 10px 10px;
 
       p {
-        color: #fff;
+        color: #495057;
       }
 
       .message-date {
-        color: #fff;
+        color: #40c057;
       }
     }
   }

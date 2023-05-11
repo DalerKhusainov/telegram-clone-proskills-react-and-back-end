@@ -7,9 +7,9 @@ const usersRouter = require("./routes/users");
 const messagesRouter = require("./routes/messages");
 
 app.use(cors());
+app.use("/messages", messagesRouter);
 app.use("/contacts", contactsRouter);
 app.use("/users", usersRouter);
-app.use("/messages", messagesRouter);
 app.use(express.json());
 
 const port = 5000;

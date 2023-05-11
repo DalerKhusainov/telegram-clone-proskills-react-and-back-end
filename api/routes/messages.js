@@ -1,25 +1,18 @@
 const Joi = require("joi");
 const express = require("express");
 const router = express.Router();
+const { LocalStorage } = require("node-localstorage");
+const storage = new LocalStorage("./local-storage/messages");
 
 router.use(express.json());
 
-const messages = [
-  {
-    messageId: "111",
-    senderId: "222",
-    receiverId: "333",
-    message: "Test Message",
-    date: "Just now",
-  },
-  {
-    messageId: "222",
-    senderId: "444",
-    receiverId: "555",
-    message: "Test Message",
-    date: "Just now",
-  },
-];
+const messages = [];
+
+// router.get("/test", (req, res) => {
+//   res.send(storage.getItem("testMessage"));
+// });
+
+// storage.setItem("testMessage", JSON.stringify(testMessage));
 
 router.get("/:senderIdParam/:receiverIdParam", (req, res) => {
   const { senderIdParam, receiverIdParam } = req.params;
