@@ -4,7 +4,32 @@ const router = express.Router();
 
 router.use(express.json());
 
-const messages = [];
+const messages = [
+  {
+    messageId: "111",
+    senderId: "222",
+    receiverId: "333",
+    message: "Test Message",
+    date: "Just now",
+  },
+  {
+    messageId: "222",
+    senderId: "444",
+    receiverId: "555",
+    message: "Test Message",
+    date: "Just now",
+  },
+];
+
+router.get("/:senderIdParam/:receiverIdParam", (req, res) => {
+  const { senderIdParam, receiverIdParam } = req.params;
+  const filteredMessages = messages.filter(
+    (message) =>
+      message.senderId === senderIdParam &&
+      message.receiverId === receiverIdParam
+  );
+  res.send(filteredMessages);
+});
 
 router.post("/", (req, res) => {
   const { error, value } = validateMessage(req.body);
